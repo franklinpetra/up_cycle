@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+
+    {% load static %}
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}">
+
+    <!-- Custom CSS stylesheet-->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> -->
+
+    <title>Welcome</title>
+    </head>
+
+    <!-- This is login and registration. -->
+    <body>
+    <div class="container">
+        <hr>
+        <div class="jumbotron">
+            <h2 class="display-4">Welcome! &nbsp; Sign in to participate in material exchange!</h2><br><br>
+                <form action="/process_registration" method="POST">
+                    <h2>Login</h2>
+                    {% csrf_token %}
+                    <label for="name">Name</label>
+                    <input type="text" name="name"><br><br>
+                    <label for="street_address">Street Address</label>
+                    <input type="text" name="city">City</label>
+                    <label for="state">State</label>
+                    <input type="text" name="state" placeholder="WA"><br><br>
+                    <label for="zip_code">Zip</label>
+                    <input type="integer_field" name="zip_code" placeholder="Seattle"><br><br>
+                    <label for="by_product">Byproduct of your Industrial Process</label>
+                    <input type="text" name="by_product"><br><br>
+                    <label for="material">Material used in your Industrial Process</label>
+                    <input type="text" name="material"><br><br>
+                    <label for="phone">Phone</label>
+                    <input type="text" name="phone"><br><br>
+                    <label for="email">Email</label>
+                    <input type="text" name="email"><br><br>
+                    <label for="password">Password </label>
+                    <input type="text" name="password"><br><br>
+                    <label for="pw_confirm">Confirm Password </label>
+                    <input type="text" name="confirm"><br><br>
+                    <button type='submit'>Register </button>
+                </form>
+            <hr class="my-4">
+            
+            <!-- This is the login side. -->
+            <form action="/process_login" method="POST">
+                <h2>Login</h2>
+                {% csrf_token %}
+                <label for="email">Email</label>
+                <input type="text" name="email"><br><br>
+                <label for="password">Password </label>
+                <input type="text" name="password"><br><br>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+
+            <!-- Error Messages pop up here -->
+            
+        <div>
+            <ul class= "error_messages">
+                {%  if messages %}
+                {% for message in messages %}
+                <li><span style="font-style:italic; color:red;">{{message}}</span></li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      
+    <!-- bootstrap.js-->
+    <script type="text/javascript" src="{% static 'bootstrap.js' %}"></script>
+
+    <!-- Custom JavaScript -->
+    <!-- <script type="text/javascript" src="script.js"></script> -->
+
+  </body>
+</html>
