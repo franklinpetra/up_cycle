@@ -15,7 +15,7 @@ class UserManager (models.Manager):
             else:
                 errors['no_pass'] = "Incorrect password. Typos perhaps?"
         else:
-            errors['no email'] = "Gosh. No emails match yours. Have you registered?"
+            errors['no_email'] = "Gosh. No emails match yours. Have you registered?"
         return errors
         
     def user_validator (self, formData):
@@ -95,7 +95,6 @@ class Company(models.Model):
     city=models.CharField(max_length=255)
     state=models.CharField(max_length=255)
     zip_code=models.IntegerField()
-    material=models.CharField(max_length=255)  
     phone=models.IntegerField()
     email=models.CharField(max_length=255)
     password=models.CharField(max_length=255)
@@ -105,13 +104,13 @@ class Company(models.Model):
 
 class Industrial_Material(models.Model):
     material_name=models.CharField(max_length=255)
-    material_source=models.ManyToManyField(Company, related_name="material_connection", blank =True, null=True)
+    material_source=models.ManyToManyField(Company, related_name="material_connection", blank=True, null=True)
     description=models.CharField(max_length=255)
     transport_method=models.CharField(max_length=255)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     objects=CompanyManager()
-        #related name is material_connection
+    #related name is material_connection
 
 # Company.objects.all().values()
 # <QuerySet [{'id': 1, 'name': 'LeHigh Cement', 'street_address_1': '5225 E. Marginal Way South', 'street_address_2': '1st Floor', 'city': 'Seattle', 'state': 'WA', 'zip_code': 98134, 'material': 'Grey Water', 'phone': 2067632525, 'email': 'jim@lehigh.com', 'password': 'Jim4489', 'created_at': datetime.datetime(2020, 4, 30, 5, 23, 32, 27834, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 4, 30, 5, 23, 32, 27872, tzinfo=<UTC>)}, {'id': 2, 'name': 'Ash Grove Cement', 'street_address_1': '3801 E. Marginal Way S', 'street_address_2': 'Blg 5', 'city': 'Seattle', 'state': 'WA', 'zip_code': 98134, 'material': 'cement crumble', 'phone': 2066235596, 'email': 'noel@ashgrove.com', 'password': 'Noel4489', 'created_at': datetime.datetime(2020, 4, 30, 5, 26, 38, 443500, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 4, 30, 5, 26, 38, 443525, tzinfo=<UTC>)}, {'id': 3, 'name': 'Puget Sound Energy', 'street_address_1': '6500 Ursula Pl S', 'street_address_2': 'Terminal Building', 'city': 'Seattle', 'state': 'WA', 'zip_code': 98108, 'material': 'glass grit', 'phone': 2062255773, 'email': 'laverne@pge.com', 'password': 'Laverne4489', 'created_at': datetime.datetime(2020, 4, 30, 5, 29, 52, 690121, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 4, 30, 5, 29, 52, 690149, tzinfo=<UTC>)}, {'id': 4, 'name': 'Kimberly Clark', 'street_address_1': '22001 84th Ave S', 'street_address_2': 'The Landing', 'city': 'Seattle', 'state': 'WA', 'zip_code': 98032, 'material': 'paper pulp', 'phone': 2528727537, 'email': 'joshua@kc.com', 'password': 'Joshua4489', 'created_at': datetime.datetime(2020, 4, 30, 5, 34, 18, 735501, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 4, 30, 5, 34, 18, 735528, tzinfo=<UTC>)}, {'id': 5, 'name': 'Lakeside Industries, Inc', 'street_address_1': '309 NW 39th St', 'street_address_2': 'Pier 3', 'city': 'Seattle', 'state': 'WA', 'zip_code': 98107, 'material': 'clean grit', 'phone': 4253132600, 'email': 'calder@lakeside.com', 'password': 'Calder4489', 'created_at': datetime.datetime(2020, 4, 30, 5, 39, 17, 508065, tzinfo=<UTC>), 'updated_at': datetime.datetime(2020, 4, 30, 5, 39, 17, 508101, tzinfo=<UTC>)}]>
