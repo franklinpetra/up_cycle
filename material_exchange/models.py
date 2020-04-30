@@ -15,7 +15,7 @@ class UserManager (models.Manager):
             else:
                 errors['no_pass'] = "Incorrect password. Typos perhaps?"
         else:
-            errors['no email'] = "Gosh. No emails match yours. Have you registered?"
+            errors['no_email'] = "Gosh. No emails match yours. Have you registered?"
         return errors
         
     def user_validator (self, formData):

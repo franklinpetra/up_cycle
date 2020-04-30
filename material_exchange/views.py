@@ -55,15 +55,14 @@ def process_login(request):
     # if "company_id" not in request.session:
     #     return redirect("/")
 
-    errors = Company.objects.login_validator(request.POST)
+    errors = User.objects.login_validator(request.POST)
     if len(errors) > 0:
         for key, error_msg in errors.items():
             messages.error(request, error_msg)
         return redirect("/")
-    login_company_list = Company.objects.filter(email=request.POST['email'])
-    logged_in_company = login_company_list[0]
-    request.session["name"] = logged_in_company.name
-    request.session["company_id"] = logged_in_company.id
+    users_filtered = User.objects.filter(email=request.POST['email'])
+    curr_user = users_filtered[0]
+    request.session["user_id"] = curr_user.id
     return redirect("/dashboard_map")
 
 # this processes the logout button and renders the resgistration and login page
