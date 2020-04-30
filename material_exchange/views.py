@@ -9,7 +9,10 @@ import bcrypt
     # Create a function to show the routing options if they were to request a material 
 
 def index(request):
-    return render(request,"index.html")
+    context={
+        "companies" : Company.objects.all()
+    }
+    return render(request,"index.html",context)
 
 def process_user(request):
     errors = User.objects.user_validator(request.POST)
@@ -44,7 +47,6 @@ def process_registration(request):
         # messages.dashboard(request,"You have been successfully registered!")
         return redirect("/")
 
-
 def user_login(request):
     if "user_id" not in request.session:
         return redirect("/")
@@ -64,8 +66,9 @@ def process_login(request):
     logged_in_company = login_company_list[0]
     request.session["name"] = logged_in_company.name
     request.session["company_id"] = logged_in_company.id
+    request.session["company_name"] = logged_in_company.name
     return redirect("/dashboard_map")
-
+    
 # this processes the logout button and renders the resgistration and login page
 # def logout(request):
 #     request.session.clear()  
@@ -76,7 +79,7 @@ def dashboard_map(request):
     if 'user_id' not in request.session:
         return redirect("/")
         all_materials=Industrial_Material.objects.all()
-    new_list=[]
+        new_list=[]
     this_user = User.objects.get(id=request.session['user_id'])
     # for material in all_materials:
     #     if material not in this_company.material_source.all():

@@ -17,31 +17,50 @@
     <div class="container">
         <hr>
         <div class="jumbotron">
-            <h2 class="display-4">Welcome to UpCycle!</h2><br> <br> 
-            <h2>Want to participate in a material exchange?</h2><br><br>
+            <h2 class="display-4">Welcome to the UpCycle</h2> 
+            <h2 class="display-4">Material Exchange!</h2><br> <br> 
                 <form action="/process_user" method="POST">
-                    <h2>Register Here</h2> <br> 
+                    <h2>Register</h2> <br> 
                     {% csrf_token %}
                         
                     <div class="input-group-sm">
                         <label for="name">Name</label>
-                        <input class="form-control"type="text" name="name"><br>
+                        <input class="form-control"type="text" name="name" placeholder="Name"><br>
                     </div>
-
                     <div class="input-group-sm">
                         <label for="email">Email</label>
-                        <input class="form-control" type="text" name="email"> <br>
+                        <input class="form-control" type="text" name="email" placeholder="Email"> <br>
                     </div>
-
                     <div class="input-group-sm">
-                        <label for="password">Password </label>
-                        <input class="form-control"type="text" name="password"><br>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option value="Company"></option>
+                                {% for company in companies %}
+                                <option>{{company.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="password">Password</label>
+                          <input type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="pw_confirm">Confirm Password</label>
+                          <input type="password" class="form-control" name="confirm" placeholder="Confirm Password">
+                        </div>
+                      </div>
+                    <!-- <div class="input-group-sm">
+                        <label for="companies">Company</label>
+                        <input class="form-control"type="text" name="companies"><br>
                     </div>
 
                     <div class="input-group-sm">
                         <label for="pw_confirm">Confirm Password </label>
                         <input class="form-control" type="text" name="confirm"><br>
-                    </div>    
+                    </div>     -->
                     <button class="btn btn-primary" type='submit'>Register </button>
                     
                 </form>
@@ -51,14 +70,31 @@
             <form action="/process_login" method="POST">
                 <h2>Login</h2>
                 {% csrf_token %}
-                <label for="email">Email</label>
-                <input type="text" name="email"><br><br>
-                <label for="password">Password </label>
-                <input type="text" name="password"><br><br>
-                <button type="submit" class="btn btn-primary">Login</button>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="inputEmail4" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="password"> Password</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                        </div>
+                    </div>
+                <!-- Select Company list -->
+                        <div class="input-group-sm">
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option value="Company"></option>
+                                    {% for company in companies %}
+                                    <option>{{company.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
             </form>
         </div>
-
             <!-- Error Messages pop up here -->
             
         <div>
