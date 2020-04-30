@@ -32,7 +32,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th scope="col">Material Id</th>
+                    <th scope="col">Material Name</th>
                     <th scope="col">Material Source</th>
                     <th scope="col">Description</th>
                     <th scope="col">Transport</th>
@@ -40,13 +40,12 @@
                 </tr>
                 </thead>
             <tbody>
-                {% for materials in filtered_list %}
+                {% for industrial_material in all_materials %}
                 <tr>
-                    <th scope="row"> {{industrial_material.id}}</th>
-                    <td> <a href="/material_info/{{industrial_material.id}}">{{industrial_material.material_name}}</a> </td>
+                    <td><a href="/material_info/{{industrial_material.id}}">{{industrial_material.material_name}}</a></td>
                     <td>{{industrial_material.material_source}}</td>
                     <td>{{industrial_material.description}}</td>
-                    <td>{{industrial_material.transport}}</td><br>
+                    <td>{{industrial_material.transport_method}}</td><br>
                         <a class="btn btn-primary" href="/material_info/{{industrial_material.id}}/{{request.session.copmany_id}}" role="button">View Material Info</a> 
                         <a class="btn btn-primary" href='/add_industrial_material/{{industrial_material.id}}/{{request.session.companyr_id}}' role="button">Add Material</a>  
                         <a class="btn btn-primary" href='/edit/{{industrial_material.id}}' role="button">Edit</a>

@@ -9,7 +9,10 @@ import bcrypt
     # Create a function to show the routing options if they were to request a material 
 
 def index(request):
-    return render(request,"index.html")
+    if "user_id" in request.session:
+        return redirect("/dashboard_map")
+    else:
+        return render(request,"index.html")
 
 def process_user(request):
     errors = User.objects.user_validator(request.POST)
@@ -74,18 +77,13 @@ def process_login(request):
 def dashboard_map(request):
     if 'user_id' not in request.session:
         return redirect("/")
-        all_materials=Industrial_Material.objects.all()
-    new_list=[]
-    this_user = User.objects.get(id=request.session['user_id'])
-    # for material in all_materials:
-    #     if material not in this_company.material_source.all():
-    #         new_list.append(material)
-    # context = {
-    #     "this_company" : this_company,
-    #     "filtered_list" : new_list,
-    #     "all_materials" : all_materials
-    # }
-    return render(request,"dashboard_map.html")
+    
+    all_materials = Industrial_Material.objects.all()
+
+    context = {
+        "all_materials" : all_materials
+    }
+    return render(request,"dashboard_map.html", context)
     
 def new_company(request):
     return render(request,"new_company.html")
@@ -111,12 +109,11 @@ def add_company(request):
         city = request.POST ["city"]
         state = request.POST ["state"]
         zip_code = request.POST ["zip_code"]
-        material = request.POST ["material"]
         phone = request.POST ["phone"]
         email = request.POST ["email"]
         password = request.POST ["password"]
         pw_hash = bcrypt.hashpw(password.encode(),bcrypt.gensalt()).decode()         
-        new_company = Company.objects.create(name=name, street_address_1=street_address_1, street_address_2=street_address_2, city=city, state=state, zip_code=zip_code, material=material, phone=phone, email=email, password=pw_hash)
+        new_company = Company.objects.create(name=name, street_address_1=street_address_1, street_address_2=street_address_2, city=city, state=state, zip_code=zip_code, phone=phone, email=email, password=pw_hash)
         # request.session["company_id"] = new_company.id
         return redirect("/dashboard_map")
 
@@ -150,7 +147,7 @@ def add_material(request):
     # material_source = request.POST["material_source"]
     description = request.POST["description"]
     transport = request.POST["transport"]
-    new_material = Industrial_Material.objects.create(material_name=material_name, description=description, transport=transport)
+    new_material = Industrial_Material.objects.create(material_name=material_name, description=description, transport_method=transport)
     # new_material.save()
     return redirect("/dashboard_map")
 
@@ -161,7 +158,7 @@ def add_material(request):
 #     return redirect("/dashboard_map")
 
 # this renders the material_info page
-def material_info(request, industrial_material_id, company_id):
+def material_info(request, industrial_material_id):
     this_material = Industrial_Material.objects.get(id=industrial_material_id)
     context = {
         'material' : this_material

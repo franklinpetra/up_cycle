@@ -13,7 +13,7 @@ urlpatterns = [
     path("new_material", views.new_material),
     path("add_company", views.new_material),
     path("new_company", views.new_company),
-    path("material_info/<int:industrial_material_id>/<int:company_id>", views.material_info),
+    path("material_info/<int:industrial_material_id>", views.material_info),
     path("edit/<int:industrial_material_id>", views.edit),
     path("edit_material/<int:material_id>", views.edit_material),
     path("delete_material/<industrial_material_id>", views.delete_material),
