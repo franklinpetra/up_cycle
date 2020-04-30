@@ -1,0 +1,266 @@
+
+
+
+./process_registration{
+    display: inline-block;
+}
+
+./process_login{
+    display: inline-block;
+}
+
+.input-group{
+    margin-left: 7vw;
+}
+
+/* .messages li{
+    color: red;
+}
+.header{
+    padding:0px 0px 0px 100px;
+
+}
+.header button{
+    height:30px;
+    width:60px;
+    color: black;
+    background-color:rgb(122, 198, 223);
+    outline-color: black;
+}
+.header a{
+    vertical-align:right;
+}
+.reg_container{
+    margin-top: 0px;
+    height:400px;
+    width: 400px;
+    background-color:lightgrey;
+    padding: 60px 0px 0px 20px;
+    display: inline-block;
+}
+.reg_container input{
+    width: 210px;
+    height: 30px;
+    object-position: right;
+    display: inline-block;
+    background-color:white; 
+}
+.reg_container button{
+    height:30px;
+    width:270px;
+    background-color:rgb(122, 198, 223);
+}
+
+.container{
+    height:600px;
+    background-color:lightgrey;
+    padding: 00px 0px 0px 20px;
+}
+.welcome{
+    text-align: center;
+    padding: 100px 0px 0px 0px;
+}
+.error_messages{
+    margin-bottom: 40px;
+    vertical-align: top;
+    color: red;
+    text-emphasis: bold;
+    text-decoration: red;
+}
+.login_container{
+    vertical-align: top;
+    height:400px;
+    width: 400px;
+    background-color:lightgrey;
+    padding: 60px 0px 0px 20px;
+    display: inline-block;
+}
+.login_container button{
+    height:30px;
+    width:270px;
+    background-color:rgb(122, 198, 223);
+}
+.login_container input{
+    height:30px;
+    width:210px;
+}
+
+.new-trip_container{
+    margin-top: 0px;
+    height:600px;
+    width: 400px;
+    background-color:lightgrey;
+    padding: 60px 0px 0px 20px;
+    outline: black solid 2px;
+    display: inline-block;
+} */
+
+/* .new-trip_container button{
+    height:30px;
+    width:270px;
+    background-color:rgb(122, 198, 223);
+    outline: black 3px solid;
+    box-shadow: black;
+}
+
+.dashboard_container input{
+    height:600px;
+    width:500px;
+    outline: black 3px solid;
+}
+
+.one_trip_container{
+    margin-top: 0px;
+    height:600px;
+    width: 400px;
+    background-color:lightgrey;
+    padding: 60px 0px 0px 20px;
+    outline: black solid 2px;
+    display: inline-block;
+} */
+
+
+/* .input-show input{
+    width: 150px;
+    object-position: right;
+    display: inline-block;
+    background-color:white;  
+}
+.input_show btn-primary A{
+    height:30px;
+    width:270px;
+    background-color:rgb(122, 198, 223);
+}
+.login_container{
+    height:300px;
+    width: 300px;
+    text-align: center;
+    display: inline-block;
+    background-color: lightgrey;
+    padding:50px 100px 0px 70px;
+    display: inline-block;  
+}  */
+
+.form{
+    height:300px;
+    width: 300px;
+    text-align: left;
+    background-color: lightgrey;
+    padding:50px 0px 0px 50px;
+    display: inline-block;  
+}
+
+
+.btn-primary{
+    height:30px;
+    width:270px;
+    background-color:rgb(122, 198, 223);
+}
+
+/* .table{
+    padding:0px 0px 0px 0px;
+    border-spacing: 5px;
+    background-color: lightgrey;
+    border: 1px solid black;
+    grid-template-rows: 100px;
+    display: inline-block;    
+}
+.table th{
+    
+    border: 1px solid black;
+    padding: 5px;
+    
+}
+.table td{
+    border: 1px solid black;
+    padding: 5px;
+    
+}
+.container_wiki{
+    height:600px;
+    background-color: lightgrey;
+    padding: 0px 0px 0px 0px;
+    color:darkslategrey
+}
+
+.container_wiki select{
+    height:30px;
+    width:270px;
+}
+
+.container_wiki btn-primary{
+    height:30px;
+    width:100px;
+    background-color:rgb(122, 198, 223);
+}
+.container_wiki form{
+    padding:50px 0px 0px 100px;
+}
+.container_wiki p{
+    padding:0px 0px 0px 40px;
+}
+.author_wiki{
+    height:600px;
+    background-color:lightgrey;
+    padding: 50px 0px 0px 70px;
+    color:darkslategrey
+}
+.author_wiki h2{
+    text-align: left;
+}
+.author_wiki select{
+    width: 270px;
+    height:30px;
+} */
+/* .success_container a{
+    padding-left: 900px;
+    vertical-align: right;
+    text-align: right;
+}
+.success_container h1{
+    padding-top: 100px;
+    text-align: center;
+    align-content: center;
+}
+.upper_messages li{
+    color: firebrick;
+    list-style-type: none;
+    
+}
+.nav{
+    height:70px;
+    background-color:lightgrey;
+    color:white;
+}
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.nav li {
+    float: left;
+    text-align: center;
+    padding-left: 50px;
+}
+
+.nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav li a:hover:not(.active) {
+    background-color: #111;
+    
+}
+
+.nav active {
+    background-color:rgb(122, 198, 223);
+}
+
+ */

@@ -1,62 +1,56 @@
+
 <!doctype html>
 <html lang="en">
-<head>
+  <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
     {% load static %}
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{% static '/bootstrap.css' %}">
+
     <!-- Custom CSS stylesheet-->
     <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}">
-    <title>UpCycle</title>
-</head>
 
-    <!-- This is login and registration for the user class. -->
+    </head>
+
+    
     <body>
     <div class="container">
         <hr>
         <div class="jumbotron">
-            <h2 class="display-4">Welcome to UpCycle!</h2><br> <br> 
-            <h2>Want to participate in a material exchange?</h2><br><br>
-                <form action="/process_user" method="POST">
-                    <h2>Register Here</h2> <br> 
-                    {% csrf_token %}
-                        
+            <h1>Welcome &nbsp; {{user.name}}</h1><br> 
+            <h2 class="display-4">Add a new material here!</h2><br> <br> 
+                <form action="/add_material" method="POST">
+                    {% csrf_token %}                        
                     <div class="input-group-sm">
-                        <label for="name">Name</label>
-                        <input class="form-control"type="text" name="name"><br>
+                        <label for="material_name">Material Name</label>
+                        <input class="form-control"type="text" name="material_name"><br>
+                    </div>
+                    <div class="input-group-sm">
+                        <label for="material_source">Material Source</label>
+                        <input class="form-control"type="text" name="material_source"> <br>
                     </div>
 
                     <div class="input-group-sm">
-                        <label for="email">Email</label>
-                        <input class="form-control" type="text" name="email"> <br>
+                        <label for="description">Description</label>
+                        <input class="form-control"type="text" name="description"><br>
                     </div>
 
                     <div class="input-group-sm">
-                        <label for="password">Password </label>
-                        <input class="form-control"type="text" name="password"><br>
+                        <label for="transport">Transport</label>
+                        <select name="transport">
+                            <option value="truck">Truck</option>
+                            <option value="tanker">Tanker</option>
+                            <option value="train">Train</option>
+                        </select>                          
                     </div>
 
-                    <div class="input-group-sm">
-                        <label for="pw_confirm">Confirm Password </label>
-                        <input class="form-control" type="text" name="confirm"><br>
-                    </div>    
-                    <button class="btn btn-primary" type='submit'>Register </button>
-                    
+                    <button class="btn btn-primary" type='submit'>Submit </button>
                 </form>
             <hr class="my-4">
-            
-            <!-- This is the login side. -->
-            <form action="/process_login" method="POST">
-                <h2>Login</h2>
-                {% csrf_token %}
-                <label for="email">Email</label>
-                <input type="text" name="email"><br><br>
-                <label for="password">Password </label>
-                <input type="text" name="password"><br><br>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
         </div>
 
             <!-- Error Messages pop up here -->
@@ -65,7 +59,7 @@
             <ul class= "error_messages">
                 {%  if messages %}
                 {% for message in messages %}
-                <p><span style="font-style:italic; color:red;">{{message}}</span></p>
+                <li><span style="font-style:italic; color:red;">{{message}}</span></li>
                 {% endfor %}
                 {% endif %}
             </ul>
