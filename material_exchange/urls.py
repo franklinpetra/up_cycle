@@ -9,6 +9,7 @@ urlpatterns = [
     path("process_user", views.process_user),
     path("process_registration", views.process_registration),
     path("process_login", views.process_login),
+    path("process_logout", views.process_logout),
     path("dashboard_map", views.dashboard_map),
     path("new_material", views.new_material),
     path("add_company", views.new_material),

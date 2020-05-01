@@ -65,42 +65,23 @@ def process_login(request):
         for key, error_msg in errors.items():
             messages.error(request, error_msg)
         return redirect("/")
-<<<<<<< HEAD
-    login_company_list = Company.objects.filter(email=request.POST['email'])
-    logged_in_company = login_company_list[0]
-    request.session["name"] = logged_in_company.name
-    request.session["company_id"] = logged_in_company.id
-    request.session["company_name"] = logged_in_company.name
-=======
     users_filtered = User.objects.filter(email=request.POST['email'])
     curr_user = users_filtered[0]
     request.session["user_id"] = curr_user.id
->>>>>>> 5601ded78f551f9fdf55c2d839ca8d5480333129
+    companies_filtered = Company.objects.filter(name=request.POST['company'])
+    curr_company = companies_filtered[0]
+    request.session["company_id"] = curr_company.id
     return redirect("/dashboard_map")
     
 # this processes the logout button and renders the resgistration and login page
-# def logout(request):
-#     request.session.clear()  
-#     return redirect('/')
+def process_logout(request):
+    request.session.clear()  
+    return redirect('/')
 
 # this creates a list of materials that our Company has chosen
 def dashboard_map(request):
     if 'user_id' not in request.session:
         return redirect("/")
-<<<<<<< HEAD
-        all_materials=Industrial_Material.objects.all()
-        new_list=[]
-    this_user = User.objects.get(id=request.session['user_id'])
-    # for material in all_materials:
-    #     if material not in this_company.material_source.all():
-    #         new_list.append(material)
-    # context = {
-    #     "this_company" : this_company,
-    #     "filtered_list" : new_list,
-    #     "all_materials" : all_materials
-    # }
-    return render(request,"dashboard_map.html")
-=======
     
     all_materials = Industrial_Material.objects.all()
 
@@ -108,7 +89,6 @@ def dashboard_map(request):
         "all_materials" : all_materials
     }
     return render(request,"dashboard_map.html", context)
->>>>>>> 5601ded78f551f9fdf55c2d839ca8d5480333129
     
 def new_company(request):
     return render(request,"new_company.html")
@@ -167,6 +147,8 @@ def add_material(request):
             messages.error(request, error)
         return redirect("/new_material")
     material_name = request.POST["material_name"]
+    # curr_company = Company.objects.get(id=request.session["company_id"])
+    # print(curr_company)
     # company = Company.objects.get(name=request.POST["material_source"])
     # material_source = company
     # material_source = request.POST["material_source"]
